@@ -13,6 +13,7 @@
 ActiveRecord::Schema.define(version: 2022_03_27_171229) do
 
   create_table "posts", force: :cascade do |t|
+    t.string "title"
     t.text "content"
     t.integer "views"
     t.integer "user_id"

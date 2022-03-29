@@ -33,6 +33,7 @@ Space.create(
 puts 'Creating posts...'
 30.times do
 	Post.create(
+		title: Faker::Games::Overwatch.quote,
 		content: Faker::Lorem.paragraph(sentence_count: 3),
 		views: 0,
 		user: User.all.sample,
