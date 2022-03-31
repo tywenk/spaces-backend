@@ -4,7 +4,7 @@ Faker::UniqueGenerator.clear
 puts '🌱 Seeding data...'
 
 puts 'Creating users...'
-10.times do
+15.times do
 	User.create(user_hash: Faker::Blockchain::Ethereum.address, is_mod: false)
 end
 
@@ -60,7 +60,7 @@ Space.create(
 )
 
 puts 'Creating posts...'
-100.times do
+20.times do
 	Post.create(
 		title: Faker::Games::Overwatch.quote,
 		content: Faker::Markdown.random,
@@ -71,7 +71,7 @@ puts 'Creating posts...'
 end
 
 puts 'Creating replies...'
-200.times do
+40.times do
 	Reply.create(
 		content: Faker::Markdown.random,
 		user: User.all.sample,

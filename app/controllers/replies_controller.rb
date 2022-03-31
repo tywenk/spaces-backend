@@ -7,18 +7,18 @@ class RepliesController < ApplicationController
 		id = params[:post_id]
 		Reply
 			.where('post_id = ?', id)
-			.to_json(include: { replies: { include: :user }, user: {}, space: {} })
+			.to_json(include: { user: { include: :shield } })
 	end
 
 	post '/replies' do
 		user_id = User.find_by_hash(params[:user_hash]).id
 
-		reply =
+		new_reply =
 			Reply.create(
 				content: params[:content],
 				user_id: user_id,
 				post_id: params[:post_id],
 			)
-		reply.to_json(include: { user: { include: :shield } })
+		new_reply.to_json(include: { user: { include: :shield } })
 	end
 end

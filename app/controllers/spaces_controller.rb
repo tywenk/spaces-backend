@@ -1,11 +1,7 @@
 class SpacesController < ApplicationController
 	info = {
 		replies: {
-			include: {
-				user: {
-					include: :shield,
-				},
-			},
+			only: %i[user_id created_at],
 		},
 		user: {
 			include: :shield,
@@ -22,7 +18,7 @@ class SpacesController < ApplicationController
 			Post.all.to_json(include: info)
 		else
 			id = Space.find_by(space_name: params[:space_id]).id
-			Post.where('space_id = ?', id).to_json(include: info)
+			Post.where('space_id = ?', id).to_json(only: %i[title id], include: info)
 		end
 	end
 end

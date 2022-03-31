@@ -1,11 +1,7 @@
 class PostsController < ApplicationController
 	info = {
 		replies: {
-			include: {
-				user: {
-					include: :shield,
-				},
-			},
+			only: %i[user_id created_at],
 		},
 		user: {
 			include: :shield,
@@ -18,11 +14,6 @@ class PostsController < ApplicationController
 	end
 
 	get '/posts/:id' do
-		post = Post.find params[:id]
-		post.to_json(include: info)
-	end
-
-	get '/posts/replies/:id' do
 		post = Post.find params[:id]
 		post.to_json(include: info)
 	end
