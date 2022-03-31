@@ -52,6 +52,8 @@ class Shield < ActiveRecord::Base
 				color4: color4_select,
 				user: self.shields_user(hash),
 			)
+		else
+			self.find_shield_by_user(hash)
 		end
 	end
 end

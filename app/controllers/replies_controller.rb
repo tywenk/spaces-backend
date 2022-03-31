@@ -19,6 +19,6 @@ class RepliesController < ApplicationController
 				user_id: user_id,
 				post_id: params[:post_id],
 			)
-		reply.to_json
+		reply.to_json(include: { user: { include: :shield } })
 	end
 end
