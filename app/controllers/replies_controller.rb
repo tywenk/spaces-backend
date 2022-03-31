@@ -11,10 +11,12 @@ class RepliesController < ApplicationController
 	end
 
 	post '/replies' do
+		user_id = User.find_by_hash(params[:user_hash]).id
+
 		reply =
 			Reply.create(
 				content: params[:content],
-				user_id: params[:user_id],
+				user_id: user_id,
 				post_id: params[:post_id],
 			)
 		reply.to_json

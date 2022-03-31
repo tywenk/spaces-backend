@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_27_171229) do
+ActiveRecord::Schema.define(version: 2022_03_30_184058) do
 
   create_table "posts", force: :cascade do |t|
     t.string "title"
@@ -34,6 +34,18 @@ ActiveRecord::Schema.define(version: 2022_03_27_171229) do
     t.index ["user_id"], name: "index_replies_on_user_id"
   end
 
+  create_table "shields", force: :cascade do |t|
+    t.integer "fieldId"
+    t.integer "hardwareId"
+    t.integer "frameId"
+    t.string "color1"
+    t.string "color2"
+    t.string "color3"
+    t.string "color4"
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_shields_on_user_id"
+  end
+
   create_table "spaces", force: :cascade do |t|
     t.string "space_name"
     t.text "description"
@@ -41,7 +53,6 @@ ActiveRecord::Schema.define(version: 2022_03_27_171229) do
 
   create_table "users", force: :cascade do |t|
     t.string "user_hash"
-    t.string "pfp"
     t.boolean "is_mod"
   end
 
@@ -49,4 +60,5 @@ ActiveRecord::Schema.define(version: 2022_03_27_171229) do
   add_foreign_key "posts", "users"
   add_foreign_key "replies", "posts"
   add_foreign_key "replies", "users"
+  add_foreign_key "shields", "users"
 end
