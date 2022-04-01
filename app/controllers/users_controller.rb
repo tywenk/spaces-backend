@@ -5,7 +5,7 @@ class UsersController < ApplicationController
 
 	get '/users/:user_hash' do
 		user = User.find_by(user_hash: params[:user_hash])
-		user.to_json(include: :shield)
+		user.to_json(include: { shield: {}, posts: {only: :title}, replies: {}})
 	end
 
 	post '/users/new' do
