@@ -21,4 +21,10 @@ class RepliesController < ApplicationController
 			)
 		new_reply.to_json(include: { user: { include: :shield } })
 	end
+
+	delete '/replies/:id' do
+		post = Reply.find(params[:id])
+		post.destroy
+		post.to_json
+	end
 end

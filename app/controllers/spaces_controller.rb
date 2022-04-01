@@ -18,7 +18,9 @@ class SpacesController < ApplicationController
 			Post.all.to_json(include: info)
 		else
 			id = Space.find_by(space_name: params[:space_id]).id
-			Post.where('space_id = ?', id).to_json(only: %i[title id], include: info)
+			Post
+				.where('space_id = ?', id)
+				.to_json(only: %i[title id created_at], include: info)
 		end
 	end
 end

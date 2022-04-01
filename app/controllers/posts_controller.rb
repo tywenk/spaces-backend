@@ -31,4 +31,10 @@ class PostsController < ApplicationController
 			)
 		post.to_json(include: info)
 	end
+
+	delete '/posts/:id' do
+		post = Post.find(params[:id])
+		post.destroy
+		post.to_json
+	end
 end
