@@ -27,7 +27,7 @@ while x < l
 	Shield.create(
 		fieldId: rand(0..299),
 		hardwareId: rand(0..120),
-		frameId: rand(0..5),
+		frameId: 0, #rand(0..5)	
 		color1: $colors.sample,
 		color2: $colors.sample,
 		color3: $colors.sample,
@@ -67,6 +67,7 @@ puts 'Creating posts...'
 		views: 0,
 		user: User.all.sample,
 		space: Space.all.sample,
+		created_at: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now),
 	)
 end
 
@@ -76,6 +77,7 @@ puts 'Creating replies...'
 		content: Faker::Markdown.random,
 		user: User.all.sample,
 		post: Post.all.sample,
+		created_at: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now),
 	)
 end
 

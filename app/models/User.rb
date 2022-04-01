@@ -13,10 +13,12 @@ class User < ActiveRecord::Base
 	end
 
 	def self.safe_create_new_user(hash)
-		unless self.user_exists?(hash)
+		if !self.user_exists?(hash)
 			self.create(user_hash: hash, is_mod: false)
 		else
 			return
 		end
 	end
+
+
 end

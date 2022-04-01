@@ -32,6 +32,12 @@ class PostsController < ApplicationController
 		post.to_json(include: info)
 	end
 
+	patch '/posts/:id' do
+		post = Post.find(params[:id])
+		post.update(content: params[:content])
+		post.to_json
+	end
+
 	delete '/posts/:id' do
 		post = Post.find(params[:id])
 		post.destroy

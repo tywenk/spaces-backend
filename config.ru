@@ -19,3 +19,4 @@ use SpacesController
 use PostsController
 use RepliesController
 use UsersController
+use ShieldsController
